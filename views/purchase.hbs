@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Image</title>
+    <link rel="stylesheet" href="/purchase.css">
+</head>
+<body>
+    {{> header username=username}}
+
+    <h1>Order and Purchase</h1>
+
+    <div class="container">
+        <h2>{{image.filename}}</h2>
+        <img src="/images2/{{image.filename}}">
+        <p><strong>Description:</strong> {{image.description}}</p>
+        <p><strong>Price:</strong> ${{image.price}}</p>
+
+        <div class="btn-container">
+            <form action="/purchase/buy/{{image.filename}}" method="POST" onsubmit="return handleBuy()">
+                <button type="submit" class="buy-btn">BUY</button>
+            </form>
+
+            <form action="/pictures" method="POST">
+                <input type="hidden" name="option" value="{{image.filename}}">
+                <button type="submit" class="cancel-btn" onclick="return handleCancel()">CANCEL</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function handleCancel() {
+            alert("MAYBE NEXT TIME");
+            return true; // proceed with form submission, redirecting back to /pictures
+        }
+
+        function handleBuy() {
+            const confirmed = confirm('Confirm Purchase?');
+
+            if (confirmed) {
+                alert("SOLD!!!");
+                return true; // proceed with the form submission, redirect back to /pictures
+            } else {
+                return false; // cancel, return false
+            }
+        }
+    </script>
+</body>
+</html>

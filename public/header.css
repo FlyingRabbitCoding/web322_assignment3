@@ -1,0 +1,28 @@
+
+.user-info {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background-color: rgba(163, 231, 99, 0.8);
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    min-width: 180px;
+    cursor: pointer;
+}
+
+.logout-link {
+    display: none;
+    color: #dc3545;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.user-info:hover .username-span {
+    display: none;
+}
+
+.user-info:hover .logout-link {
+    display: inline-block;
+}

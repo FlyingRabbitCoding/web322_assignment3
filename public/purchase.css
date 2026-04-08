@@ -1,0 +1,57 @@
+body { 
+    font-family: Arial, sans-serif; 
+    text-align: center; 
+    padding: 20px; 
+}
+
+.container { 
+    border: 1px solid #ccc; 
+    padding: 20px; 
+    display: inline-block; 
+    border-radius: 8px; 
+}
+
+img { 
+    max-width: 300px; 
+    display: block; 
+    margin: 10px auto; 
+}
+
+.btn-container { 
+    margin-top: 20px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-container form {
+    display: inline-block;
+    margin: 0;
+}
+
+button {
+    padding: 15px 30px;
+    cursor: pointer; 
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    height: 60px;
+    min-width: 150px;
+    transition: opacity 0.2s;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.buy-btn { 
+    background-color: #28a745; 
+    color: white; 
+}
+
+.cancel-btn { 
+    background-color: #dc3545; 
+    color: white; 
+}

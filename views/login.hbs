@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>web322 Assignment 3 - login page</title>
+    <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+
+    <h1>Login Page</h1>
+
+    <form id="loginform" method="POST" action="/login">
+        <label>Username: </label>
+        <input name="username1" type="text" size="15" placeholder="Enter your usernmae">
+        <br><br><br>
+        <label>Password:</label>
+        <input name="password1" type="password" size="15" placeholder="Enter your password">
+        <br><br><br>
+        <button name="button1" type="submit" value="Submit">Submit</button>
+        <label name="lblMessage">{{data.lblMessage}}</label>
+    </form>
+</body>
+</html>
+

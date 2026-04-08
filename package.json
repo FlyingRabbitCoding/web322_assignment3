@@ -1,0 +1,20 @@
+{
+  "name": "npm_pictures",
+  "version": "1.0.0",
+  "description": "assignment_1 - pictures",
+  "main": "pictures.js",
+  "author": "Billie Wu",
+  "scripts": {
+    "start": "node pictures.js"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "client-sessions": "^0.8.0",
+    "express": "^5.2.1",
+    "express-handlebars": "^8.0.5",
+    "mongodb": "^7.1.1",
+    "path": "^0.12.7",
+    "randomstring": "^1.3.1",
+    "save": "^2.9.0"
+  }
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disney Character</title>
+  <link rel="stylesheet" href="pictures.css">
+</head>
+
+<body>
+  {{> header username=data.username}}
+
+  <div class="container">
+    <h1>Disney characters</h1>
+    
+    <form method="post">
+      <div class="dropdown-container">
+        <select name="option" id="image-selector">
+          <option value="" {{#unless selectedId}}selected{{/unless}}>-- Select a Character --</option>
+          
+          {{#each images}}
+            <option value="{{filename}}" {{#if selected}}selected{{/if}}>
+              {{label}}
+            </option>
+          {{/each}}
+        </select>
+      </div>
+      <button type="submit">submit</button>
+    </form>
+
+    <div class="box">
+      {{#if selectedLabel}}
+        <a href="/purchase/{{selectedLabel}}">
+          <img src="{{displayImage}}" class="active-image" alt="Click Image">
+        </a>
+        <h2 class="character-name">{{selectedLabel}}</h2>
+      {{else}}
+        <img src="{{displayImage}}" class="default-image">
+        <h2 class="character-name">Welcome to the Disney Store</h2>
+      {{/if}}
+    </div>
+  </div>
+
+</body>
+</html>
