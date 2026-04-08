@@ -32,9 +32,19 @@ const client = new MongoClient(uri, {
 
 const purchaseRouter = require('./routes/purchase')(client);
 
+// fix for vercel caching the connection
+async function connectToDatabase() {
+    if (cachedDb) return cachedDb; // Use existing connection
+    //   const client = await MongoClient.connect(process.env.MONGODB_URI);
+    await client.connect();
+    cachedDb = client;
+    return client;
+}
+
 async function run() {
     try {
-        await client.connect();
+        // await client.connect();
+        connectToDatabase();
         console.log("Connected to MongoDB Atlas");
         const db = client.db('dbs');
         users = await db.collection("Users").find({}).toArray();
@@ -97,6 +107,7 @@ app.post("/login", async (req, res) => {
         if (targetUser.password === password) {
             try {
                 // 1. Access the database
+                connectToDatabase();
                 const db = client.db('dbs');
                 
                 // 2. Reset all documents in the 'Gallery' collection
@@ -133,6 +144,7 @@ app.post("/login", async (req, res) => {
 
 app.get("/pictures", checkL, async (req, res) => {
     try {
+        connectToDatabase();
         const db = client.db('dbs');
         // Fetch only available images directly from the DB
         const availableImages = await db.collection("Gallery").find({ status: "A" }).toArray();
@@ -158,6 +170,7 @@ app.get("/pictures", checkL, async (req, res) => {
 app.post("/pictures", checkL, async (req, res) => {
     try {
         const choice = (req.body && req.body.option) ? req.body.option : "";
+        connectToDatabase();
         const db = client.db('dbs');
         
         // Reload the current available list

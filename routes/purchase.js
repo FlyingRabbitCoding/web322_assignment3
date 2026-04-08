@@ -9,6 +9,7 @@ module.exports = function(client) {
             const imageLabel = req.params.imageLabel;
             console.log("GET purchase for: " + imageLabel);
 
+            connectToDatabase();
             const database = client.db("dbs");
             const purchaseDB = database.collection("Gallery");
             
@@ -32,6 +33,7 @@ module.exports = function(client) {
         console.log("POST /purchase/buy/:filename triggered");
         try {
             const filename = req.params.filename;
+            connectToDatabase();
             const database = client.db("dbs");
             const purchaseDB = database.collection("Gallery");
 
