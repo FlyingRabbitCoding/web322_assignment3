@@ -31,8 +31,6 @@ const client = new MongoClient(uri, {
   }
 });
 
-const purchaseRouter = require('./routes/purchase')(client);
-
 // fix for vercel caching the connection
 async function connectToDatabase() {
     if (cachedDb) return cachedDb; // Use existing connection
@@ -41,6 +39,8 @@ async function connectToDatabase() {
     cachedDb = client;
     return client;
 }
+
+const purchaseRouter = require('./routes/purchase')(client, connectToDatabase);
 
 async function run() {
     try {
@@ -202,7 +202,7 @@ app.listen(HTTP_PORT, () => {
     console.log(`Server running: http://localhost:${HTTP_PORT}`);
 });
 
-app.use('/purchase', checkL, purchaseRouter);
+app.use('/purchase', checkL, purchaseRouter, connectToDatabase);
 
 app.use((req, res) => {
     res.status(404).send("Page Not Found");

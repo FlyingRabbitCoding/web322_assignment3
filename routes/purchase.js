@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-module.exports = function(client) {
+module.exports = function(client, connectToDatabase) {
     router.get("/:imageLabel", async (req, res) => {
         console.log("GET /purchase/:imageLabel triggered");
 
