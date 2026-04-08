@@ -20,6 +20,7 @@ const uri = "mongodb+srv://assignmentuser:GO5OGR3DoIVHIUjA@cluster0.acntyy2.mong
 const app = express();
 
 let users = [];
+let cachedDb = null;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
