@@ -70,8 +70,9 @@ app.set('view engine', 'hbs');
 app.use(clientSession({
     cookieName: "MySession",
     secret: randomstring.generate(),
-    duration: 1 * 60 * 1000,
-    activeDuration: 1 * 60 * 1000,
+    // secret: "my_secret_string",
+    duration: 30 * 60 * 1000,
+    activeDuration: 5 * 60 * 1000,
     httpOnly: true,
     secure: false,     
     ephemeral: true
