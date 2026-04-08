@@ -45,6 +45,8 @@ async function run() {
 
 run().catch(console.dir);
 
+app.set('views', path.join(__dirname, 'views'));
+
 app.engine('hbs', exphbs.engine({
     extname: '.hbs',
     defaultLayout: false,

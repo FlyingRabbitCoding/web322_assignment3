@@ -4,7 +4,7 @@
     {
       "src": "pictures.js",
       "use": "@vercel/node",
-      "config": { "includeFiles": ["dist/**"] }
+      "config": { "includeFiles": ["views/**", "dist/**"] }
     }
   ],
   "routes": [
