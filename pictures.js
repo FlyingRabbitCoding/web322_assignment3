@@ -35,8 +35,8 @@ const client = new MongoClient(uri, {
 async function connectToDatabase() {
     if (cachedDb) return cachedDb; // Use existing connection
     //   const client = await MongoClient.connect(process.env.MONGODB_URI);
-    await client.connect();
-    cachedDb = client;
+    const tempCache = await client.connect();
+    cachedDb = tempCache;
     return client;
 }
 
